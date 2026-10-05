@@ -1,3 +1,4 @@
+/*
 package webservices;
 
 // Import the necessary JAX-RS (Java API for RESTful Web Services) annotations and classes
@@ -38,3 +39,4 @@ public class HelloRessources {
                 .build();
     }
 }
+*/
