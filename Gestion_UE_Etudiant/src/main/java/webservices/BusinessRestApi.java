@@ -39,4 +39,30 @@ public class BusinessRestApi {
                 .entity(helper.getModuleByMatricule(code))
                 .build();
     }
+    @Path("/{inputcode}")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getUbByenseignement(@PathParam("inputcode") UniteEnseignement code){
+        return Response.status(200)
+                .entity(helper.getModulesByUE(code))
+                .build();
+    }
+    @Path("/")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getBuBytype(@QueryParam("type") Module type){
+        return Response.status(200)
+                .entity(helper.getModulesByType(type))
+                .build();
+    }
+
+@Path("/delete")
+@DELETE
+@Produces(MediaType.APPLICATION_JSON)
+public Response deleteUeBymatrcul(@QueryParam("code") String code){
+    if(helper.deleteModule(code))
+        return Response.status(200).entity("ok").build();
+    else
+        return Response.status(400).entity("error").build();
+}
 }
