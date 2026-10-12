@@ -39,4 +39,22 @@ public class BusinessRestApi {
                 .entity(helper.getModuleByMatricule(code))
                 .build();
     }
+    @Path("/")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getBuBySemestere(@QueryParam("semestere") Module semestere){
+        return Response.status(200)
+                .entity(helper.getModulesByType(semestere))
+                .build();
+    }
+
+@Path("/delete")
+@DELETE
+@Produces(MediaType.APPLICATION_JSON)
+public Response deleteUeBymatrcul(@QueryParam("code") String code){
+    if(helper.deleteModule(code))
+        return Response.status(200).entity("ok").build();
+    else
+        return Response.status(400).entity("error").build();
+}
 }
