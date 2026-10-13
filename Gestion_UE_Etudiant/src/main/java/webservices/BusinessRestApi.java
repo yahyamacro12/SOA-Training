@@ -2,6 +2,7 @@ package webservices;
 
 
 import entities.Module;
+import entities.UniteEnseignement;
 import metiers.ModuleBusiness;
 
 import javax.ws.rs.*;
@@ -39,18 +40,18 @@ public class BusinessRestApi {
                 .entity(helper.getModuleByMatricule(code))
                 .build();
     }
-    @Path("/{inputcode}")
+    @Path("/{ue}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getUbByenseignement(@PathParam("inputcode") UniteEnseignement code){
+    public Response getUbByenseignement(@PathParam("ue") UniteEnseignement ue){
         return Response.status(200)
-                .entity(helper.getModulesByUE(code))
+                .entity(helper.getModulesByUE(ue))
                 .build();
     }
     @Path("/")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getBuBytype(@QueryParam("type") Module type){
+    public Response getBuBytype(@QueryParam("type") Module.TypeModule type){
         return Response.status(200)
                 .entity(helper.getModulesByType(type))
                 .build();
